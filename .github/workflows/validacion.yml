@@ -1,0 +1,16 @@
+name: Validacion basica
+on:
+  push:
+  pull_request:
+jobs:
+  revisar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Revisar archivos principales
+        run: |
+          test -f src/index.html
+          test -f src/styles.css
+          test -f Dockerfile
+          test -f docker-compose.yml
+          echo "Estructura minima encontrada"
